@@ -268,12 +268,13 @@
 
       const productSummary = {
         id: thisProduct.id,
-        name: thisProduct.name,
-        amount: thisProduct.amount,
+        name: thisProduct.data.name,
+        amount: thisProduct.amountWidget.value,
         priceSingle: thisProduct.priceSingle,
-        price: thisProduct.priceSingle * thisProduct.amount,
+        price: thisProduct.priceSingle * thisProduct.amountWidget.value,
         params: thisProduct.prepareCartProductParams(),
       };
+      console.log(thisProduct);
 
       return productSummary;
     }
@@ -415,6 +416,8 @@
 
     add(menuProduct) {
       const thisCart = this;
+
+      console.log(menuProduct);
 
       /* generate HTML based on template */
       const generatedHTML = templates.cartProduct(menuProduct);
