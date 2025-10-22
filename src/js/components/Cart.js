@@ -102,8 +102,6 @@ class Cart {
     for (const totalElem of thisCart.dom.totalPrice) {
       totalElem.innerHTML = thisCart.totalPrice;
     }
-    console.log(thisCart.totalNumber);
-    console.log(thisCart.subtotalPrice);
   }
 
   remove(cartProduct) {
@@ -134,7 +132,6 @@ class Cart {
       payload.products.push(prod.getData());
     }
 
-    console.log(payload);
     const url = settings.db.url + '/' + settings.db.orders;
     const options = {
       method: 'POST',
@@ -149,7 +146,7 @@ class Cart {
         return response.json();
       })
       .then(function (parsedResponse) {
-        console.log('parsed response', parsedResponse);
+        //console.log('parsed response', parsedResponse);
       });
   }
 }

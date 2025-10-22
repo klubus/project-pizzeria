@@ -251,5 +251,15 @@
       "starters": ["lemonWater"]
     }
   ],
-  "bookings": []
+  "bookings": [
+    {
+      "id": 5,
+      "date": "2025-11-01",
+      "hour": "18:00",
+      "table": 1,
+      "duration": 4,
+      "ppl": 3,
+      "starters": ["water"]
+    }
+  ]
 }
