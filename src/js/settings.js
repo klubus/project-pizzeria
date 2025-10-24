@@ -42,6 +42,10 @@ export const select = {
       peopleAmount: '.people-amount',
       hoursAmount: '.hours-amount',
       tables: '.floor-plan .table',
+      floorPlan: '.floor-plan',
+      dataTable: 'data-table',
+      phoneNumber: 'input[name="phone"]',
+      address: 'input[name="address"]',
     },
   },
   nav: {

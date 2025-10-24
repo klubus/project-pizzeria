@@ -84,6 +84,7 @@ class Cart {
     const thisCart = this;
     const deliveryFee = settings.cart.defaultDeliveryFee;
     thisCart.totalNumber = 0;
+    thisCart.totalPrice = 0;
     thisCart.subtotalPrice = 0;
 
     for (const element of thisCart.products) {
@@ -141,13 +142,9 @@ class Cart {
       body: JSON.stringify(payload),
     };
 
-    fetch(url, options)
-      .then(function (response) {
-        return response.json();
-      })
-      .then(function (parsedResponse) {
-        //console.log('parsed response', parsedResponse);
-      });
+    fetch(url, options).then(function (response) {
+      return response.json();
+    });
   }
 }
 
