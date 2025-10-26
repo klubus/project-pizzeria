@@ -49,7 +49,10 @@ export const select = {
       phoneNumber: 'input[name="phone"]',
       address: 'input[name="address"]',
     },
-    home: {},
+    home: {
+      homeOrder: '.home-order',
+      homeBook: '.home-book',
+    },
   },
   nav: {
     links: '.main-nav a',

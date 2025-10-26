@@ -1,25 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Pizzeria</title>
     <link
       href="https://fonts.googleapis.com/css?family=Lato:400,300i,700%7COswald:300,500,700&amp;subset=latin-ext"
-      rel="stylesheet"
-    />
+      rel="stylesheet">
     <link
-      href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
-      rel="stylesheet"
-    />
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      rel="stylesheet">
     <link
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
-    />
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="vendor/range-slider.min.css" />
-    <link rel="stylesheet" href="vendor/flickity.min.css" media="screen" />
+      href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="vendor/range-slider.min.css">
+    <link rel="stylesheet" href="vendor/flickity.min.css" media="screen">
   </head>
   <body>
     <header class="header">
@@ -69,12 +66,11 @@
                   </li>
                 </ul>
                 <div class="cart__order-confirmation">
-                  <input type="tel" name="phone" placeholder="Your phone" />
+                  <input type="tel" name="phone" placeholder="Your phone">
                   <input
                     type="text"
                     name="address"
-                    placeholder="Your address"
-                  />
+                    placeholder="Your address">
                   <button type="submit" class="btn-secondary">Order</button>
                 </div>
               </form>
@@ -99,48 +95,89 @@
     <script id="template-home-widget" type="text/x-handlebars-template">
       <div class='home-widget'>
         <div class='order-book'>
-          <div class='home-order'>ORDER ONLINE</div>
-          <div class='home-book'>BOOK A TABLE</div>
+          <div class='home-order'>
+            <span class='main-text'>ORDER ONLINE</span>
+            <span class='extra-text'>Delicious food delivery to your door</span>
+          </div>
+          <div class='home-book'>
+            <span class='main-text'>BOOK A TABLE</span>
+            <span class='extra-text'>Order from our menu now!</span>
+          </div>
         </div>
         <div class='opening-hours'>OPENING HOURS:
           <span class='days-hours'>TUE-SUN 12PM - 12AM</span></div>
 
         <div class='main-carousel'>
-          <div class='carousel-cell'><img
-              src='images/pizza-2.jpg'
-              alt=''
-            /></div>
-          <div class='carousel-cell'><img
-              src='images/pizza-3.jpg'
-              alt=''
-            /></div>
-          <div class='carousel-cell'><img
-              src='images/pizza-4.jpg'
-              alt=''
-            /></div>
+          <div class='carousel-cell'><img src='images/pizza-2.jpg' alt='' />
+            <div class='carousel-text'>
+              <h3>Delicious Pizza</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
+                non risus non est consequat dignissim.</p>
+              <p>-- Oliver</p>
+            </div></div>
+          <div class='carousel-cell'><img src='images/pizza-3.jpg' alt='' />
+            <div class='carousel-text'>
+              <h3>Delicious Pizza</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
+                non risus non est consequat dignissim.</p>
+              <p>-- Greg</p>
+
+            </div></div>
+          <div class='carousel-cell'><img src='images/pizza-4.jpg' alt='' />
+            <div class='carousel-text'>
+              <h3>Delicious Pizza</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
+                non risus non est consequat dignissim.</p>
+              <p>-- Tom</p>
+
+            </div></div>
         </div>
         <div class='home-images'>
           <div class='home-image'>
             <img src='images/pizza-1.jpg' alt='' />
+            <div class='icons'>
+              <i class='fa-solid fa-heart'></i>
+              <i class='fa-solid fa-share-nodes'></i>
+            </div>
           </div>
           <div class='home-image'>
             <img src='images/pizza-2.jpg' alt='' />
+            <div class='icons'>
+              <i class='fa-solid fa-heart'></i>
+              <i class='fa-solid fa-share-nodes'></i>
+            </div>
           </div>
           <div class='home-image'>
             <img src='images/pizza-3.jpg' alt='' />
+            <div class='icons'>
+              <i class='fa-solid fa-heart'></i>
+              <i class='fa-solid fa-share-nodes'></i>
+            </div>
           </div>
           <div class='home-image'>
             <img src='images/pizza-4.jpg' alt='' />
+            <div class='icons'>
+              <i class='fa-solid fa-heart'></i>
+              <i class='fa-solid fa-share-nodes'></i>
+            </div>
           </div>
           <div class='home-image'>
             <img src='images/pizza-5.jpg' alt='' />
+            <div class='icons'>
+              <i class='fa-solid fa-heart'></i>
+              <i class='fa-solid fa-share-nodes'></i>
+            </div>
           </div>
           <div class='home-image'>
             <img src='images/pizza-6.jpg' alt='' />
+            <div class='icons'>
+              <i class='fa-solid fa-heart'></i>
+              <i class='fa-solid fa-share-nodes'></i>
+            </div>
           </div>
         </div>
         <div class='instagram'>
-          <a href='instagram.com'>View more on Instagram</a>
+          <a href='http://instagram.com'>View more on Instagram</a>
         </div>
       </div>
     </script>

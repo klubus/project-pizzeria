@@ -39,12 +39,6 @@ const app = {
   activatePage: function (pageId) {
     const thisApp = this;
     for (let page of thisApp.pages) {
-      //   if (page.id == pageId) {
-      //     page.classList.add(classNames.pages.active);
-      //   } else {
-      //     page.classList.remove(classNames.pages.active);
-      //   }
-
       page.classList.toggle(classNames.pages.active, page.id == pageId);
     }
 
@@ -115,3 +109,5 @@ const app = {
 };
 
 app.init();
+
+window.app = app;

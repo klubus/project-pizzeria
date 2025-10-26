@@ -1,5 +1,6 @@
-import { templates } from '../settings.js';
+import { select, templates } from '../settings.js';
 /* global Flickity */
+/* global app */
 
 class Home {
   constructor(element) {
@@ -22,8 +23,25 @@ class Home {
     thisHome.flickity = new Flickity(carouselElem, {
       cellAlign: 'left',
       contain: true,
+      pageDots: true,
       wrapAround: true,
+      autoPlay: 3000,
+      imagesLoaded: true,
     });
+
+    thisHome.dom.wrapper
+      .querySelector(select.widgets.home.homeOrder)
+      .addEventListener('click', () => {
+        app.activatePage('order');
+        window.location.hash = '#/order';
+      });
+
+    thisHome.dom.wrapper
+      .querySelector(select.widgets.home.homeBook)
+      .addEventListener('click', () => {
+        app.activatePage('booking');
+        window.location.hash = '#/booking';
+      });
   }
 }
 
