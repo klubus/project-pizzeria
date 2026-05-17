@@ -1,4 +1,4 @@
-export const STATIC_MODE = window.location.hostname !== 'localhost';
+export const STATIC_MODE = !!document.querySelector('base[href*="/projects/"]');
 export const select = {
   templateOf: {
     menuProduct: '#template-menu-product',
