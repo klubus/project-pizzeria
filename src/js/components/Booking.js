@@ -1,4 +1,10 @@
-import { classNames, select, settings, templates } from '../settings.js';
+import {
+  classNames,
+  select,
+  settings,
+  templates,
+  STATIC_MODE,
+} from '../settings.js';
 import AmountWidget from './AmountWidget.js';
 import DatePicker from './DatePicker.js';
 import HourPicker from './HourPicker.js';
@@ -17,14 +23,29 @@ class Booking {
   getData() {
     const thisBooking = this;
 
-    const startDateParam =
-      settings.db.dateStartParamKey +
-      '=' +
-      utils.dateToStr(thisBooking.datePicker.minDate);
-    const endDateParam =
-      settings.db.dateEndParamKey +
-      '=' +
-      utils.dateToStr(thisBooking.datePicker.maxDate);
+    const minDateStr = utils.dateToStr(thisBooking.datePicker.minDate);
+    const maxDateStr = utils.dateToStr(thisBooking.datePicker.maxDate);
+
+    if (STATIC_MODE) {
+      fetch('./db/app.json')
+        .then((r) => r.json())
+        .then((data) => {
+          const bookings = (data.bookings || []).filter(
+            (b) => b.date >= minDateStr && b.date <= maxDateStr
+          );
+          const eventsCurrent = (data.events || []).filter(
+            (e) => !e.repeat && e.date >= minDateStr && e.date <= maxDateStr
+          );
+          const eventsRepeat = (data.events || []).filter(
+            (e) => e.repeat && e.date <= maxDateStr
+          );
+          thisBooking.parseData(bookings, eventsCurrent, eventsRepeat);
+        });
+      return;
+    }
+
+    const startDateParam = settings.db.dateStartParamKey + '=' + minDateStr;
+    const endDateParam = settings.db.dateEndParamKey + '=' + maxDateStr;
 
     const params = {
       booking: [startDateParam, endDateParam],
@@ -59,19 +80,13 @@ class Booking {
       fetch(urls.eventsRepeat),
     ])
       .then(function (allResponses) {
-        const bookingResponse = allResponses[0];
-        const eventsCurrentResponse = allResponses[1];
-        const eventsRepeatResponse = allResponses[2];
         return Promise.all([
-          bookingResponse.json(),
-          eventsCurrentResponse.json(),
-          eventsRepeatResponse.json(),
+          allResponses[0].json(),
+          allResponses[1].json(),
+          allResponses[2].json(),
         ]);
       })
       .then(function ([bookings, eventsCurrent, eventsRepeat]) {
-        // console.log(bookings);
-        // console.log(eventsCurrent);
-        // console.log(eventsRepeat);
         thisBooking.parseData(bookings, eventsCurrent, eventsRepeat);
       });
   }
@@ -218,6 +233,16 @@ class Booking {
       if (checkbox.checked) {
         payload.starters.push(checkbox.value);
       }
+    }
+
+    if (STATIC_MODE) {
+      thisBooking.makeBooked(
+        payload.date,
+        payload.hour,
+        payload.duration,
+        payload.table
+      );
+      return;
     }
 
     const url = settings.db.url + '/' + settings.db.bookings;

@@ -1,4 +1,10 @@
-import { settings, select, templates, classNames } from '../settings.js';
+import {
+  settings,
+  select,
+  templates,
+  classNames,
+  STATIC_MODE,
+} from '../settings.js';
 import { utils } from '../utils.js';
 import CartProduct from './CartProduct.js';
 
@@ -131,6 +137,10 @@ class Cart {
 
     for (let prod of thisCart.products) {
       payload.products.push(prod.getData());
+    }
+
+    if (STATIC_MODE) {
+      return;
     }
 
     const url = settings.db.url + '/' + settings.db.orders;

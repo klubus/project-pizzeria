@@ -1,4 +1,4 @@
-import { settings, select, classNames } from './settings.js';
+import { settings, select, classNames, STATIC_MODE } from './settings.js';
 import Product from './components/Product.js';
 import Cart from './components/Cart.js';
 import Booking from './components/Booking.js';
@@ -70,14 +70,16 @@ const app = {
   initData: function () {
     const thisApp = this;
     thisApp.data = {};
-    const url = settings.db.url + '/' + settings.db.products;
+    const url = STATIC_MODE
+      ? './db/app.json'
+      : settings.db.url + '/' + settings.db.products;
 
     fetch(url)
-      .then(function (rawResponse) {
-        return rawResponse.json();
-      })
-      .then(function (parsedResponse) {
-        thisApp.data.products = parsedResponse;
+      .then((rawResponse) => rawResponse.json())
+      .then((parsedResponse) => {
+        thisApp.data.products = STATIC_MODE
+          ? parsedResponse.products
+          : parsedResponse;
         thisApp.initMenu();
       });
   },

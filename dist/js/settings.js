@@ -1,3 +1,4 @@
+export const STATIC_MODE = window.location.hostname !== 'localhost';
 export const select = {
   templateOf: {
     menuProduct: '#template-menu-product',
